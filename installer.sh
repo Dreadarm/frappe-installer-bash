@@ -206,23 +206,22 @@ bench init frappe-bench --frappe-branch version-15 --python python3.11
 cd frappe-bench/
 
 display_step "14" "Create a site in frappe bench"
-bench new-site hello.com --admin-password $admin_password --db-root-password $db_root_password
-bench --site hello.com add-to-hosts
+bench new-site scp.teksoft.io --admin-password $admin_password --db-root-password $db_root_password
+bench --site scp.teksoft.io add-to-hosts
 
 display_step "15" "Install ERPNext latest version in bench & site"
 bench get-app erpnext --branch version-15
-bench --site hello.com install-app erpnext
+bench --site scp.teksoft.io install-app erpnext
 sudo kill -9 $(lsof -t -i:11000)
 sudo kill -9 $(lsof -t -i:13000)
 bench start &
 sleep 5
-xdg-open "http://hello.com:8000"
+xdg-open "http://scp.teksoft.io:8000"
 
 echo "------------------------------------------------------------"
 echo "Installation Complete!"
-echo "URL: http://hello.com:8000"
+echo "URL: scp.teksoft.io:8000"
 echo "Use the following credentials to login:"
 echo "user: administrator"
 echo "password: $admin_password"
 echo "------------------------------------------------------------"
-echo "Thank you for using the installer. Feel free to star the repo at https://github.com/anxkhn/frappe-installer-bash"
